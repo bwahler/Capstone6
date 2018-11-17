@@ -1,0 +1,15 @@
+﻿
+@*@{
+    ViewBag.Title = "Welcome";
+}*@
+
+<h2>Welcome</h2>
+
+<form name="Register" action="/Home/AddUser" method="post">
+    <label class="label">UserID</label><input type="number" class="form-control" value="@ViewBag.AddUser.UserID" name="UserID" />
+    <label class="label">FirstName</label><input type="text" class="form-control" value="@ViewBag.AddUser.FirstName" name="FirstName" />
+    <label class="label">LastName</label><input type="text" class="form-control" value="@ViewBag.AddUser.LastName" name="LastName" />
+    <label class="label">Email Address</label><input type="email" class="form-control" value="@ViewBag.AddUser.Email_Address" name="Email Address" />
+    <label class="label">Password</label><input type="password" class="form-control" value="@ViewBag.AddUser.Password" name="Password" /><br /><br />
+    <input type="submit" value="Add User"/>
+</form>

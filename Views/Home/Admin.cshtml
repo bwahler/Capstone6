@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "Admin";
+}
+
+<h2>Admin</h2>
+
+<table border="1" class="table">
+    @foreach (var task in ViewBag.TaskList)
+    {
+        <tr>
+            <td>
+                @task.TaskID
+            </td>
+            <td>
+                @task.Description
+            </td>
+            <td>
+                @task.DueDate
+            </td>
+        </tr>
+    }
+</table>
