@@ -7,6 +7,7 @@
       <Diagram DiagramId="207e469df1bf454db589d03e147d70cf" Name="Diagram1">
         <EntityTypeShape EntityType="TaskListDBModel.TaskList" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="TaskListDBModel.Users" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="TaskListDBModel.FK_TaskList_Users" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

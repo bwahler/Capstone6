@@ -7,6 +7,8 @@
     <Property Name="TaskID" Type="Int32" Nullable="false" />
     <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="DueDate" Type="DateTime" Precision="3" />
+    <Property Name="UserID" Type="Int32" />
+    <NavigationProperty Name="Users" Relationship="TaskListDBModel.FK_TaskList_Users" FromRole="TaskList" ToRole="Users" />
   </EntityType>
   <EntityType Name="Users">
     <Key>
@@ -15,11 +17,28 @@
     <Property Name="UserID" Type="Int32" Nullable="false" />
     <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Email_Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email_Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="TaskList" Relationship="TaskListDBModel.FK_TaskList_Users" FromRole="Users" ToRole="TaskList" />
   </EntityType>
   <EntityContainer Name="TaskListDBEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="TaskList" EntityType="Self.TaskList" />
     <EntitySet Name="Users" EntityType="Self.Users" />
+    <AssociationSet Name="FK_TaskList_Users" Association="TaskListDBModel.FK_TaskList_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="TaskList" EntitySet="TaskList" />
+    </AssociationSet>
   </EntityContainer>
+  <Association Name="FK_TaskList_Users">
+    <End Type="TaskListDBModel.Users" Role="Users" Multiplicity="0..1" />
+    <End Type="TaskListDBModel.TaskList" Role="TaskList" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="TaskList">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

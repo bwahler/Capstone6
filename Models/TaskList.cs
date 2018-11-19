@@ -17,5 +17,8 @@ namespace Capstone6.Models
         public int TaskID { get; set; }
         public string Description { get; set; }
         public Nullable<System.DateTime> DueDate { get; set; }
+        public Nullable<int> UserID { get; set; }
+    
+        public virtual Users Users { get; set; }
     }
 }
