@@ -3,5 +3,38 @@
     ViewBag.Title = "TaskList";
 }
 
-<h2>TaskList</h2>
+<h2>@ViewBag.UserName's Task List</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Description
+        </th>
+        <th>
+            DueDate
+        </th>
+        <th>
+            
+        </th>
+        <th></th>
+    </tr>
+    @foreach (var o in ViewBag.TaskList)
+    {
+        if (o.UserID == ViewBag.UserID)
+        {
+        <tr>
+            
+            <td>@o.Description</td>
+            <td>@o.DueDate</td>
+            <td>
+                <a href="/Home/DeleteOrder?OrderID=@o.TaskID"
+                   onclick="return confirm('Are you sure?')" class="btn-danger btn-sm">Delete</a>
+            </td>
+            @*"?" stands for where. Use it to run an ActionResult on one specific item*@
+            @*ex: youtube.com/watch?v=[video's id]*@
+        </tr>
+            }
+        }
+
+</table>
 

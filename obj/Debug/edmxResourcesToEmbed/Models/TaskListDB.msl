@@ -4,6 +4,7 @@
     <EntitySetMapping Name="TaskList">
       <EntityTypeMapping TypeName="TaskListDBModel.TaskList">
         <MappingFragment StoreEntitySet="TaskList">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
           <ScalarProperty Name="TaskID" ColumnName="TaskID" />
           <ScalarProperty Name="Description" ColumnName="Description" />
           <ScalarProperty Name="DueDate" ColumnName="DueDate" />

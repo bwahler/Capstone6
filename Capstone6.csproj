@@ -309,6 +309,7 @@
     <Content Include="Views\Home\TaskList.cshtml" />
     <Content Include="Views\Home\AddTask.cshtml" />
     <Content Include="Views\Home\Admin.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

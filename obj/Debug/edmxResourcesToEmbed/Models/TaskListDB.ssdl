@@ -7,6 +7,7 @@
     <Property Name="TaskID" Type="int" Nullable="false" />
     <Property Name="Description" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="DueDate" Type="datetime" />
+    <Property Name="UserID" Type="int" />
   </EntityType>
   <EntityType Name="Users">
     <Key>
@@ -15,11 +16,27 @@
     <Property Name="UserID" Type="int" Nullable="false" />
     <Property Name="FirstName" Type="varchar" MaxLength="50" />
     <Property Name="LastName" Type="varchar" MaxLength="50" />
-    <Property Name="Email Address" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email Address" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
+  <Association Name="FK_TaskList_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <End Role="TaskList" Type="Self.TaskList" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="TaskList">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="TaskListDBModelStoreContainer">
     <EntitySet Name="TaskList" EntityType="Self.TaskList" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_TaskList_Users" Association="Self.FK_TaskList_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="TaskList" EntitySet="TaskList" />
+    </AssociationSet>
   </EntityContainer>
 </Schema>
